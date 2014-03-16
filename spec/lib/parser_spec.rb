@@ -3,6 +3,78 @@ require "spec_helper"
 describe BuildLogParser::Parser do
   let(:parser) { described_class.new(log) }
 
+  describe "#tests" do
+    let(:result) { parser.tests }
+
+    context "when no test data" do
+      let(:log) { "foobar" }
+
+      it "returns nil" do
+        expect(result).to be_nil
+      end
+    end
+
+    context "on test unit data" do
+      let(:log) { fixture "test_unit.txt" }
+
+      it "returns a hash" do
+        expect(result).to be_a Hash
+      end
+
+      it "includes number of tests" do
+        expect(result[:count]).to eq 11
+      end
+
+      it "includes number of failed tests" do
+        expect(result[:failures]).to eq 4
+      end
+
+      it "includes number pending tests" do
+        expect(result[:pending]).to eq nil
+      end
+    end
+
+    context "on rspec data" do
+      let(:log) { fixture "rspec.txt" }
+
+      it "returns a hash" do
+        expect(result).to be_a Hash
+      end
+
+      it "includes number of specs" do
+        expect(result[:count]).to eq 71
+      end
+
+      it "includes number of failed specs" do
+        expect(result[:failures]).to eq 0
+      end
+
+      it "includes number of pending specs" do
+        expect(result[:pending]).to eq 2
+      end
+    end
+
+    context "on multiple rspec data" do
+      let(:log) { fixture "rspec_multiple.txt" }
+
+      it "returns a hash" do
+        expect(result).to be_a Hash
+      end
+
+      it "includes sum of specs" do
+        expect(result[:count]).to eq 1686
+      end
+
+      it "includes sum of failures" do
+        expect(result[:failures]).to eq 15
+      end
+
+      it "includes sum of pending" do
+        expect(result[:pending]).to eq 3
+      end
+    end
+  end
+
   describe "#coverage" do
     let(:log)    { "Coverage report generated for RSpec to /tmp/coverage. 3354 / 5045 LOC (66.48%) covered." }
     let(:result) { parser.coverage }
