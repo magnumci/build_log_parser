@@ -35,8 +35,7 @@ module BuildLogParser
       matches = body.scan(pattern)
       return if matches.empty?
 
-      total = matches.flatten.map { |m| ChronicDuration.parse(m) }.reduce(:+)
-      total
+      matches.flatten.map { |m| ChronicDuration.parse(m) }.reduce(:+)
     end
   end
 end
