@@ -1,0 +1,14 @@
+Finished in 58.09 seconds
+1017 examples, 0 failures
+
+Finished in 57.53 seconds
+499 examples, 27 failures
+
+Finished in 13 minutes 42 seconds
+1126 examples, 377 failures
+
+Finished in 3.93 seconds
+615 examples, 0 failures
+
+Finished in 0.54247 seconds
+54 examples, 0 failures

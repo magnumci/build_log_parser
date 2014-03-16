@@ -1,0 +1,12 @@
+... come other code ...
+
+Finished in 3.93 seconds
+615 examples, 4 failures
+
+Finished in 0.54247 seconds
+54 examples, 5 failures
+
+Finished in 58.09 seconds
+1017 examples, 6 failures, 3 pending
+
+... some other code ...

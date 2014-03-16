@@ -1,0 +1,7 @@
+Started
+...........
+Finished in 0.021957 seconds.
+
+11 tests, 14 assertions, 4 failures, 2 errors
+
+Done. Build script exited with: 0

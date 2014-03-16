@@ -1,0 +1,10 @@
+Pending:
+  BaseMailer 
+    # No reason given
+    # ./spec/mailers/base_mailer_spec.rb:4
+  OrderMailer#on_complete sends order notification to buyer
+    # No reason given
+    # ./spec/mailers/build_mailer_spec.rb:5
+
+Finished in 4.8 seconds
+71 examples, 0 failures, 2 pending
