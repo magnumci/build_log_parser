@@ -18,6 +18,8 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "rspec",     "~> 2.13"
   spec.add_development_dependency "simplecov", "~> 0.8"
 
+  spec.add_dependency "chronic_duration", "~> 0.10"
+
   spec.files         = `git ls-files`.split("\n")
   spec.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   spec.executables   = `git ls-files -- bin/*`.split("\n").map { |f| File.basename(f) }

@@ -6,6 +6,17 @@ module BuildLogParser
       @body = body
     end
 
+    def duration
+      patterns = [
+        /^finished in (.*)\n?/i,
+        /^finished tests in (.*),/i,
+        /ran [\d]+ tests in (.*)\n?/i,
+        /time: (.*), memory:/i
+      ]
+
+      patterns.map { |p| scan_duration(p) }.compact.reduce(:+)
+    end
+
     def coverage
       if body =~ /\s([\d]+) \/ ([\d]+) LOC \(([\d]+\.[\d]+)%\) covered\./
         {
@@ -16,6 +27,16 @@ module BuildLogParser
       else
         nil
       end
+    end
+
+    private
+
+    def scan_duration(pattern)
+      matches = body.scan(pattern)
+      return if matches.empty?
+
+      total = matches.flatten.map { |m| ChronicDuration.parse(m) }.reduce(:+)
+      total
     end
   end
 end
