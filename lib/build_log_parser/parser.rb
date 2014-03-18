@@ -1,24 +1,21 @@
+require "build_log_parser/duration_matcher"
+
 module BuildLogParser
   class Parser
+    include DurationMatcher
+
     attr_reader :body
 
     def initialize(body)
       @body = body
     end
 
-    def tests
-      rspec_stats || test_unit_stats
+    def duration
+      fetch_duration(body)
     end
 
-    def duration
-      patterns = [
-        /^finished in (.*)\n?/i,
-        /^finished tests in (.*),/i,
-        /ran [\d]+ tests in (.*)\n?/i,
-        /time: (.*), memory:/i
-      ]
-
-      patterns.map { |p| scan_duration(p) }.compact.reduce(:+)
+    def tests
+      rspec_stats || test_unit_stats
     end
 
     def coverage
@@ -34,13 +31,6 @@ module BuildLogParser
     end
 
     private
-
-    def scan_duration(pattern)
-      matches = body.scan(pattern)
-      return if matches.empty?
-
-      matches.flatten.map { |m| ChronicDuration.parse(m) }.reduce(:+)
-    end
 
     def rspec_stats
       matches = body.scan(/^([\d]+) examples, ([\d]+) failures(, ([\d]+) pending)?/m)
