@@ -121,7 +121,7 @@ describe BuildLogParser::Parser do
           ["Finished in 5 seconds", 5.00],
           ["Ran 1234 tests in 14.855s", 14.855],
           ["Time: 01:50, Memory: 113.00Mb", 110.00],
-          ["Finished tests in 8.071688s, 3.8406 tests/s, 9.4156 assertions/s.", 11.912288]
+          ["Finished tests in 8.071688s, 3.8406 tests/s, 9.4156 assertions/s.", 8.071688]
         ]
       end
 

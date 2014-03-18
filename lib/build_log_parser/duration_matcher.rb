@@ -2,7 +2,7 @@ module BuildLogParser
   module DurationMatcher
     PATTERNS = [
       /^finished in (.*)\n?/i,
-      /^finished tests in (.*),/i,
+      /^finished tests in ([\d]\.[\d]+s),/i,
       /ran [\d]+ tests in (.*)\n?/i,
       /time: (.*), memory:/i
     ]
