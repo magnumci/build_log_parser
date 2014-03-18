@@ -88,7 +88,7 @@ describe BuildLogParser::Parser do
     end
 
     it "includes number of lines" do
-      expect(result[:lines]).to eq 3354
+      expect(result[:lines_covered]).to eq 3354
     end
 
     it "includes total number of lines" do

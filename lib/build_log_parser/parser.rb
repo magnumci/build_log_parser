@@ -1,8 +1,10 @@
 require "build_log_parser/duration_matcher"
+require "build_log_parser/coverage_matcher"
 
 module BuildLogParser
   class Parser
     include DurationMatcher
+    include CoverageMatcher
 
     attr_reader :body
 
@@ -19,15 +21,7 @@ module BuildLogParser
     end
 
     def coverage
-      if body =~ /\s([\d]+) \/ ([\d]+) LOC \(([\d]+\.[\d]+)%\) covered\./
-        {
-          lines:            $1.to_i,
-          lines_total:      $2.to_i,
-          coverage_percent: $3.to_f
-        }
-      else
-        nil
-      end
+      fetch_coverage(body)
     end
 
     private
