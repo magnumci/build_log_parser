@@ -29,7 +29,7 @@ Example log output:
 ```
 Finished in 2 minutes 23.4 seconds
 1169 examples, 0 failures, 17 pending
-Coverage report generated for RSpec to /home/magnum/purchasing_platform/coverage. 3816 / 4835 LOC (78.92%) covered.
+Coverage report generated for RSpec to /app/coverage. 3816 / 4835 LOC (78.92%) covered.
 ```
 
 Example usage:
