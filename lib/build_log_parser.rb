@@ -3,15 +3,15 @@ require "build_log_parser/parser"
 require "chronic_duration"
 
 module BuildLogParser
-  def tests(str)
-    self.new(str).tests
+  def self.tests(str)
+    Parser.new(str).tests
   end
 
-  def coverage(str)
-    self.new(str).coverage
+  def self.coverage(str)
+    Parser.new(str).coverage
   end
 
-  def duration(str)
-    self.new(str).duration
+  def self.duration(str)
+    Parser.new(str).duration
   end
 end
