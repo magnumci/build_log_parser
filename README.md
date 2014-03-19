@@ -53,6 +53,16 @@ parser.duration
 # => 143.4 (in seconds)
 ```
 
+Alternative usage:
+
+``` ruby
+str = "your build log"
+
+BuildLogParser.tests(str)
+BuildLogParser.coverage(str)
+BuildLogParser.duration(str)
+```
+
 ## Tests
 
 Execute test suite by running the following command:
