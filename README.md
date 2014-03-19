@@ -2,6 +2,9 @@
 
 Fetch metrics from build logs: tests, duration, coverage, etc.
 
+[![Build Status](https://magnum-ci.com/status/eb64be07cb99aaa701aa902522f11ffa.png)](https://magnum-ci.com/public/71629b4f296ef091fc02/builds)
+[![Code Climate](https://codeclimate.com/github/magnumci/build_log_parser.png)](https://codeclimate.com/github/magnumci/build_log_parser)
+
 ## Installation
 
 Install via rubygems:
