@@ -1,6 +1,6 @@
 module BuildLogParser
   module DurationMatcher
-    PATTERNS = [
+    DURATION_PATTERNS = [
       /^finished in (.*)/i,
       /^finished tests in ([\d]\.[\d]+s),/i,
       /ran [\d]+ tests in (.*)\n?/i,
@@ -8,7 +8,7 @@ module BuildLogParser
     ]
 
     def fetch_duration(str)
-      PATTERNS.map { |p| scan_duration(str, p) }.compact.reduce(:+)
+      DURATION_PATTERNS.map { |p| scan_duration(str, p) }.compact.reduce(:+)
     end
 
     private
