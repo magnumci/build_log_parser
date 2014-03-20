@@ -1,0 +1,11 @@
+Time: 176 ms, Memory: 8.25Mb
+
+OK (5 tests, 6 assertions)
+
+Code Coverage Report 
+  2014-03-20 20:38:22
+  
+ Summary: 
+  Classes: 50.00% (6/12)
+  Methods: 58.73% (37/63)
+  Lines:   60.24% (247/410)

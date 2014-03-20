@@ -125,5 +125,13 @@ describe BuildLogParser::Parser do
         expect(result).to eq 942.0924699999999
       end
     end
+
+    context "with phpunit data" do
+      let(:log) { fixture "phpunit.txt" }
+
+      it "returns total duration" do
+        expect(result).to eq 0.176
+      end
+    end
   end
 end
