@@ -2,6 +2,7 @@ require "build_log_parser/duration_matcher"
 require "build_log_parser/coverage_matcher"
 require "build_log_parser/rspec_matcher"
 require "build_log_parser/test_unit_matcher"
+require "build_log_parser/phpunit_matcher"
 
 module BuildLogParser
   class Parser
@@ -9,6 +10,7 @@ module BuildLogParser
     include CoverageMatcher
     include RspecMatcher
     include TestUnitMatcher
+    include PHPUnitMatcher
 
     attr_reader :body
 
@@ -22,7 +24,8 @@ module BuildLogParser
 
     def tests
       fetch_rspec_stats(body) ||
-      fetch_test_unit_stats(body)
+      fetch_test_unit_stats(body) ||
+      fetch_phpunit_stats(body)
     end
 
     def coverage

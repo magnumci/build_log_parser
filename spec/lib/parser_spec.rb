@@ -61,6 +61,18 @@ describe BuildLogParser::Parser do
         )
       end
     end
+
+    context "with phpunit data" do
+      let(:log) { fixture "phpunit.txt" }
+
+      it "returns test metrics" do
+        expect(result).to eq Hash(
+          count: 5,
+          failures: nil,
+          pending: nil
+        )
+      end
+    end
   end
 
   describe "#coverage" do
@@ -92,9 +104,9 @@ describe BuildLogParser::Parser do
 
       it "returns coverage metrics" do
         expect(result).to eq Hash(
-          coverage_percent: 60.24,
-          lines_covered: 247,
-          lines_total: 410
+          coverage_percent: 81.16,
+          lines_covered: 1034,
+          lines_total: 1274
         )
       end
     end
