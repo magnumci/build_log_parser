@@ -17,60 +17,48 @@ describe BuildLogParser::Parser do
     context "on test unit data" do
       let(:log) { fixture "test_unit.txt" }
 
-      it "returns a hash" do
-        expect(result).to be_a Hash
+      it "returns test metrics" do
+        expect(result).to eq Hash(
+          count: 11,
+          failures: 4,
+          pending: nil
+        )
       end
 
-      it "includes number of tests" do
-        expect(result[:count]).to eq 11
-      end
+      context "on alternative syntax" do
+        let(:log) { fixture "test_unit_2.txt" }
 
-      it "includes number of failed tests" do
-        expect(result[:failures]).to eq 4
-      end
-
-      it "includes number pending tests" do
-        expect(result[:pending]).to eq nil
+        it "returns tests metrics" do
+          expect(result).to eq Hash(
+            count: 3971,
+            failures: 11,
+            pending: 1
+          )
+        end
       end
     end
 
     context "on rspec data" do
       let(:log) { fixture "rspec.txt" }
 
-      it "returns a hash" do
-        expect(result).to be_a Hash
-      end
-
-      it "includes number of specs" do
-        expect(result[:count]).to eq 71
-      end
-
-      it "includes number of failed specs" do
-        expect(result[:failures]).to eq 0
-      end
-
-      it "includes number of pending specs" do
-        expect(result[:pending]).to eq 2
+      it "returns rspec test metrics" do
+        expect(result).to eq Hash(
+          count: 71,
+          failures: 0,
+          pending: 2
+        )
       end
     end
 
-    context "on multiple rspec data" do
+    context "on rspec with multiple runs" do
       let(:log) { fixture "rspec_multiple.txt" }
 
-      it "returns a hash" do
-        expect(result).to be_a Hash
-      end
-
-      it "includes sum of specs" do
-        expect(result[:count]).to eq 1686
-      end
-
-      it "includes sum of failures" do
-        expect(result[:failures]).to eq 15
-      end
-
-      it "includes sum of pending" do
-        expect(result[:pending]).to eq 3
+      it "returns summarized test metrics" do
+        expect(result).to eq Hash(
+          count: 1686,
+          failures: 15,
+          pending: 3
+        )
       end
     end
   end
@@ -83,16 +71,12 @@ describe BuildLogParser::Parser do
       expect(result).to be_a Hash
     end
 
-    it "includes coverage percentage" do
-      expect(result[:coverage_percent]).to eq 66.48
-    end
-
-    it "includes number of lines" do
-      expect(result[:lines_covered]).to eq 3354
-    end
-
-    it "includes total number of lines" do
-      expect(result[:lines_total]).to eq 5045
+    it "returns coverage metrics hash" do
+      expect(result).to eq Hash(
+        coverage_percent: 66.48,
+        lines_covered: 3354,
+        lines_total: 5045
+      )
     end
 
     context "with no coverage data" do

@@ -1,7 +1,7 @@
 module BuildLogParser
   module TestMatcher
     PATTERN_RSPEC     = /^([\d]+) examples, ([\d]+) failures(, ([\d]+) pending)?/m
-    PATTERN_TEST_UNIT = /^([\d]+) tests, ([\d]+) assertions, ([\d]+) failures, ([\d]+) errors$/m
+    PATTERN_TEST_UNIT = /^([\d]+) (tests|runs), ([\d]+) assertions, ([\d]+) failures, ?([\d]+) errors(, ([\d]+) skips)?$/m
 
     def fetch_rspec_stats(str)
       matches = str.scan(PATTERN_RSPEC)
@@ -22,8 +22,8 @@ module BuildLogParser
       if str =~ PATTERN_TEST_UNIT
         {
           count:    $1.to_i,
-          failures: $3.to_i,
-          pending:  nil
+          failures: $4.to_i,
+          pending:  $7 ? $7.to_i : nil
         }
       end
     end
