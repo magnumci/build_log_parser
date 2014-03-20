@@ -15,6 +15,7 @@ module BuildLogParser
 
     def scan_duration(str, pattern)
       str.
+        gsub(/\s\((.*)\)/, "").
         scan(pattern).
         flatten.
         map { |m| ChronicDuration.parse(m) }.
