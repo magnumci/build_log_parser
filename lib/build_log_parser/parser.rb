@@ -1,12 +1,14 @@
 require "build_log_parser/duration_matcher"
 require "build_log_parser/coverage_matcher"
-require "build_log_parser/test_matcher"
+require "build_log_parser/rspec_matcher"
+require "build_log_parser/test_unit_matcher"
 
 module BuildLogParser
   class Parser
     include DurationMatcher
     include CoverageMatcher
-    include TestMatcher
+    include RspecMatcher
+    include TestUnitMatcher
 
     attr_reader :body
 
