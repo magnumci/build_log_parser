@@ -22,7 +22,12 @@ gem "build_log_parser"
 ## Usage
 
 Build log parser library provides an ability to fetch various metrics from build
-logs. Supports tests, coverage and duration metrics.
+logs. Supports tests, coverage and duration metrics from frameworks:
+
+- RSpec (Ruby)
+- Test::Unit (Ruby)
+- NPM (Node.js)
+- PHPUnit (PHP)
 
 Example log output:
 
