@@ -4,7 +4,8 @@ module BuildLogParser
       /^finished in (.*)/i,
       /^finished tests in ([\d]\.[\d]+s),/i,
       /ran [\d]+ tests in (.*)\n?/i,
-      /time: (.*), memory:/i
+      /time: (.*), memory:/i,
+      /[\d]+ passing (.*)/
     ]
 
     def fetch_duration(str)
@@ -15,7 +16,8 @@ module BuildLogParser
 
     def scan_duration(str, pattern)
       str.
-        gsub(/\s\((.*)\)/, "").
+        gsub(/(seconds|minutes|hours)\s\((.*)\)/, "").
+        gsub(/(([\d]+)ms)/) { |m| "0.#{$2}s" }.
         scan(pattern).
         flatten.
         map { |m| ChronicDuration.parse(m) }.
