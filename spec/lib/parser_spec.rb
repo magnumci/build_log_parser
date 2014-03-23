@@ -72,6 +72,18 @@ describe BuildLogParser::Parser do
           pending: nil
         )
       end
+
+      context "on failure" do
+        let(:log) { fixture "phpunit_failure.txt" }
+
+        it "returns test metrics" do
+          expect(result).to eq Hash(
+            count: 158,
+            failures: 3,
+            pending: nil
+          )
+        end
+      end
     end
   end
 
