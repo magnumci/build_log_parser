@@ -5,7 +5,8 @@ module BuildLogParser
       /^finished tests in ([\d]\.[\d]+s),/i,
       /ran [\d]+ tests in (.*)\n?/i,
       /time: (.*), memory:/i,
-      /[\d]+ passing (.*)/
+      /[\d]+ passing (.*)/,
+      /executed [\d]+ of [\d]+ \w+ \(([\d\.]+) secs\)/
     ]
 
     def fetch_duration(str)

@@ -143,7 +143,8 @@ describe BuildLogParser::Parser do
           [ "Time: 01:50, Memory: 113.00Mb", 110.00 ],
           [ "Finished tests in 8.071688s, 3.8406 tests/s, 9.4156 assertions/s.", 8.071688 ],
           [ "Finished in 10.8 seconds (3.1s on load, 7.7s on tests)", 10.8 ],
-          [ "80 passing (347ms)", 0.347 ]
+          [ "80 passing (347ms)", 0.347 ],
+          [ "JS 1.9.7 (Linux): Executed 202 of 202 SUCCESS (12.156 secs / 11.47 secs)", 12.156 ]
         ]
       end
 
