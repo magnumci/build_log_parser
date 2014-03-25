@@ -1,8 +1,8 @@
-require "build_log_parser/duration_matcher"
-require "build_log_parser/coverage_matcher"
-require "build_log_parser/rspec_matcher"
-require "build_log_parser/test_unit_matcher"
-require "build_log_parser/phpunit_matcher"
+require "build_log_parser/matchers/duration_matcher"
+require "build_log_parser/matchers/coverage_matcher"
+require "build_log_parser/matchers/rspec_matcher"
+require "build_log_parser/matchers/test_unit_matcher"
+require "build_log_parser/matchers/phpunit_matcher"
 
 module BuildLogParser
   class Parser
