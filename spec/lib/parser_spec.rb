@@ -163,6 +163,14 @@ describe BuildLogParser::Parser do
       end
     end
 
+    context "with multiple js entries" do
+      let(:log) { fixture "js.txt" }
+
+      it "returns total duration" do
+        expect(result).to eq 0.886
+      end
+    end
+
     context "with phpunit data" do
       let(:log) { fixture "phpunit.txt" }
 

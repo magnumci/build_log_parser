@@ -22,6 +22,7 @@ module BuildLogParser
         scan(pattern).
         flatten.
         map { |m| ChronicDuration.parse(m) }.
+        compact.
         reduce(:+)
     end
   end
