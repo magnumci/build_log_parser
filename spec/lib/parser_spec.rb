@@ -122,6 +122,18 @@ describe BuildLogParser::Parser do
         )
       end
     end
+
+    context "with istanbul data" do
+      let(:log) { fixture "istanbul.txt" }
+
+      it "returns coverage metrics" do
+        expect(result).to eq Hash(
+          coverage_percent: 22.35,
+          lines_covered: 245,
+          lines_total: 1096
+        )
+      end
+    end
   end
 
   describe "#duration" do

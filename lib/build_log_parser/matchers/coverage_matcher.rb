@@ -4,7 +4,8 @@ module BuildLogParser
 
     def fetch_coverage(str)
       fetch_rspec_coverage(str) ||
-      fetch_phpunit_coverage(str)
+      fetch_phpunit_coverage(str) ||
+      fetch_istanbul_coverage(str)
     end
 
     protected
@@ -21,6 +22,16 @@ module BuildLogParser
 
     def fetch_phpunit_coverage(str)
       if body =~ /Lines:\s+([\d.]+)% \(([\d]+)\/([\d]+)\)/
+        {
+          lines_covered:    $2.to_i,
+          lines_total:      $3.to_i,
+          coverage_percent: $1.to_f
+        }
+      end
+    end
+
+    def fetch_istanbul_coverage(str)
+      if body =~ /Lines\s+:\s+([\d.]+)% \(\s([\d]+)\/([\d]+)\s\)/
         {
           lines_covered:    $2.to_i,
           lines_total:      $3.to_i,
