@@ -28,6 +28,7 @@ logs. Supports tests, coverage and duration metrics from frameworks:
 - Test::Unit (Ruby)
 - NPM (Node.js)
 - PHPUnit (PHP)
+- Istanbul (Javascript)
 
 Example log output:
 
