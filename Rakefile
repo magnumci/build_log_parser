@@ -8,6 +8,8 @@ RSpec::Core::RakeTask.new(:test) do |t|
 end
 
 task :console do
+  $LOAD_PATH << "./lib"
+
   require "irb"
   require "irb/completion"
   require "build_log_parser"
