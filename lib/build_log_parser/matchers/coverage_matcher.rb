@@ -27,9 +27,9 @@ module BuildLogParser
     def fetch_phpunit_coverage(str)
       if body =~ PATTERNS[:phpunit]
         {
-          coverage_percent: $1.to_f,
           lines_covered:    $2.to_i,
-          lines_total:      $3.to_i
+          lines_total:      $3.to_i,
+          coverage_percent: $1.to_f
         }
       end
     end
@@ -37,9 +37,9 @@ module BuildLogParser
     def fetch_istanbul_coverage(str)
       if body =~ PATTERNS[:istanbul]
         {
-          coverage_percent: $1.to_f,
           lines_covered:    $2.to_i,
-          lines_total:      $3.to_i
+          lines_total:      $3.to_i,
+          coverage_percent: $1.to_f
         }
       end
     end
