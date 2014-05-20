@@ -1,6 +1,10 @@
 module BuildLogParser
   module CoverageMatcher
-    PATTERN = /\s([\d]+) \/ ([\d]+) LOC \(([\d]+\.[\d]+)%\) covered\./
+    PATTERNS = {
+      rspec:    /\s([\d]+) \/ ([\d]+) LOC \(([\d]+\.[\d]+)%\) covered\./,
+      phpunit:  /Lines:\s+([\d.]+)% \(([\d]+)\/([\d]+)\)/,
+      istanbul: /Lines\s+:\s+([\d.]+)% \(\s([\d]+)\/([\d]+)\s\)/
+    }
 
     def fetch_coverage(str)
       fetch_rspec_coverage(str) ||
@@ -11,7 +15,7 @@ module BuildLogParser
     protected
 
     def fetch_rspec_coverage(str)
-      if body =~ PATTERN
+      if body =~ PATTERNS[:rspec]
         {
           lines_covered:    $1.to_i,
           lines_total:      $2.to_i,
@@ -21,7 +25,7 @@ module BuildLogParser
     end
 
     def fetch_phpunit_coverage(str)
-      if body =~ /Lines:\s+([\d.]+)% \(([\d]+)\/([\d]+)\)/
+      if body =~ PATTERNS[:phpunit]
         {
           lines_covered:    $2.to_i,
           lines_total:      $3.to_i,
@@ -31,7 +35,7 @@ module BuildLogParser
     end
 
     def fetch_istanbul_coverage(str)
-      if body =~ /Lines\s+:\s+([\d.]+)% \(\s([\d]+)\/([\d]+)\s\)/
+      if body =~ PATTERNS[:istanbul]
         {
           lines_covered:    $2.to_i,
           lines_total:      $3.to_i,
